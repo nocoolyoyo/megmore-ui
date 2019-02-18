@@ -83,7 +83,8 @@ export default class MChip extends Mixins (
                  name='cancel' />
         : undefined
     )
-  }
+  }3
+
 
   render () {
     const { classes, styles, $slots, RMedia, RClose, onClick } = this

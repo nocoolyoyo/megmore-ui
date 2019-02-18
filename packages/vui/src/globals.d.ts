@@ -15,7 +15,7 @@ import {
 // import { TouchStoredHandlers } from './directives/touch'
 
 import { MegmorePlugin as Megmore }  from '.'
-
+declare module '@megmore/vui/icon/icons/3d_totation.ts'
 declare global {
   interface Window {
     Vue: VueConstructor

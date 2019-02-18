@@ -39,7 +39,7 @@
     word-break: keep-all;
     user-select: none;
     line-height: 1;
-
+    transition: all ease .3s;
     &.m--closeable {
         padding-right: calc(var(--m-chip__close-size) / 1.5);
     }
