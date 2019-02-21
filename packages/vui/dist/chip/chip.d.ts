@@ -17,6 +17,7 @@ export default class MChip extends MChip_base {
     };
     RMedia(): import("vue").VNode[] | undefined;
     RClose(): JSX.Element | undefined;
+    3: any;
     render(): JSX.Element;
 }
 export {};

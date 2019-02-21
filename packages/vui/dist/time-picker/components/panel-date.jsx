@@ -3,7 +3,7 @@ import { Component, Emit, Inject, Prop, Vue } from 'vue-property-decorator';
 import MButton from '../../button';
 import MIcon from '../../icon';
 import { Color, Variety, Shape } from '../../core/constant';
-import { datePickerType } from '../constant';
+import { DatePickerType } from '../../core/constant';
 const compName = 'm-time-picker-panel-date';
 const WeekMap = ['日', '一', '二', '三', '四', '五', '六'];
 let MTimePickerPanelDate = class MTimePickerPanelDate extends Vue {
@@ -57,7 +57,7 @@ let MTimePickerPanelDate = class MTimePickerPanelDate extends Vue {
         return (<thead><tr>{Tds}</tr></thead>);
     }
     RTableBody() {
-        const { viewDateValue, viewYear, viewMonth, handleDateClick } = this;
+        const { color, viewDateValue, viewYear, viewMonth, handleDateClick } = this;
         const { year, month, date } = this.DateStore;
         const nowValue = new Date();
         const isNowDate = nowValue.getFullYear() === viewYear && nowValue.getMonth() === viewMonth;
@@ -73,7 +73,8 @@ let MTimePickerPanelDate = class MTimePickerPanelDate extends Vue {
         for (let tempDate = 1; tempDate <= viewMonthDays; tempDate++) {
             const isCurDate = isCurMonth && (tempDate === date);
             const isToday = isNowDate && (tempDate === nowDate);
-            Tds.push(<td><MButton class='m-m-0 m-p-0' size='sm' shape={Shape.circle} elevation={0} variety={isCurDate ? Variety.default : isToday ? Variety.outline : Variety.flat} color={isCurDate || isToday ? Color.primary : Color.default} onClick={() => handleDateClick(viewYear, viewMonth, tempDate)}>
+            console.log(color);
+            Tds.push(<td><MButton class='m-m-0 m-p-0' size='sm' shape={Shape.circle} elevation={0} variety={isCurDate ? Variety.default : isToday ? Variety.outline : Variety.flat} color={color} onClick={() => handleDateClick(viewYear, viewMonth, tempDate)}>
         {tempDate}
       </MButton></td>);
             if ((tempDate + viewFirstWeekDay) % 7 === 0 || tempDate === viewMonthDays) {
@@ -88,7 +89,7 @@ let MTimePickerPanelDate = class MTimePickerPanelDate extends Vue {
         return (<div staticClass={compName}>
         <div class={`${compName}__header`}>
           <div staticClass={`${compName}__header-year`}>
-            <MButton variety={Variety.flat} staticClass='m-m-0' color={Color.default} elevation={0} onClick={() => this.DateStore.SET_ACTIVE_TYPE(datePickerType.year)}>
+            <MButton variety={Variety.flat} staticClass='m-m-0' color={Color.default} elevation={0} onClick={() => this.DateStore.SET_ACTIVE_TYPE(DatePickerType.year)}>
               {viewYear}
             </MButton>
           </div>
@@ -106,7 +107,7 @@ let MTimePickerPanelDate = class MTimePickerPanelDate extends Vue {
 };
 tslib_1.__decorate([
     Prop({ type: String, default: Color.primary })
-], MTimePickerPanelDate.prototype, "type", void 0);
+], MTimePickerPanelDate.prototype, "color", void 0);
 tslib_1.__decorate([
     Prop({ type: Number })
 ], MTimePickerPanelDate.prototype, "min", void 0);

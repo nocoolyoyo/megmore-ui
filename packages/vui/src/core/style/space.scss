@@ -20,7 +20,6 @@ $--Spaces: (
 }
 
 @each $breakpoint in $--Breakpoints {
-    @debug $breakpoint;
     $value: var(--m-space-#{$breakpoint});
 
     .m-mt-#{$breakpoint} {

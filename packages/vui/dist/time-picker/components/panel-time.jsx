@@ -3,8 +3,7 @@ import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator';
 // import { getStyle } from '@megmore/es-helper'
 import MButton from '../../button';
 import MIcon from '../../icon';
-import { dateTimeValueType } from '../constant';
-import { Color, Variety, Shape } from '../../core/constant';
+import { Color, Variety, Shape, DateTimeValueType } from '../../core/constant';
 const compName = 'm-time-picker-panel-time';
 // const baseFont: any = getStyle(document.documentElement, 'font-size')
 // const clockSize = 12 * Number(baseFont.substring(0, baseFont.length - 2))
@@ -15,7 +14,7 @@ const compName = 'm-time-picker-panel-time';
 let MTimePickerPanelTime = class MTimePickerPanelTime extends Vue {
     onClick(val, type) {
         this.DateStore.SET_ACTIVE_TYPE(type);
-        this.DateStore.UPDATE((type === dateTimeValueType.hours && this.DateStore.ampm && !this.DateStore.am)
+        this.DateStore.UPDATE((type === DateTimeValueType.hours && this.DateStore.ampm && !this.DateStore.am)
             ? val + 12
             : val, type);
     }
@@ -23,8 +22,8 @@ let MTimePickerPanelTime = class MTimePickerPanelTime extends Vue {
         const { onClick, hourStep, minuteStep } = this;
         const { ampm } = this.DateStore;
         const min = 0;
-        const max = type === dateTimeValueType.hours ? ampm ? 11 : 23 : 59;
-        const step = type === dateTimeValueType.hours ? hourStep : minuteStep;
+        const max = type === DateTimeValueType.hours ? ampm ? 11 : 23 : 59;
+        const step = type === DateTimeValueType.hours ? hourStep : minuteStep;
         const time = this.DateStore[type];
         const Temps = [];
         for (let tempTime = min; tempTime <= max; tempTime += step) {
@@ -40,8 +39,8 @@ let MTimePickerPanelTime = class MTimePickerPanelTime extends Vue {
     render() {
         const { RList } = this;
         const Result = [];
-        Result.push(RList(dateTimeValueType.hours));
-        Result.push(RList(dateTimeValueType.minutes));
+        Result.push(RList(DateTimeValueType.hours));
+        Result.push(RList(DateTimeValueType.minutes));
         return (<div staticClass={compName}>{Result}</div>);
     }
 };

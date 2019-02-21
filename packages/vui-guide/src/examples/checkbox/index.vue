@@ -1,4 +1,3 @@
-
 <template>
   <ExampleBox>
     <MCheckbox v-model="checkVal"
@@ -23,12 +22,12 @@
     </MRow>
   </ExampleBox>
 </template>
-
 <script>
 import { MCheckbox } from '@megmore/vui'
 import ExampleBox from '@/components/example-box.vue'
 import exampleProps from '@/mixins/example-props'
 import Props from './props'
+
 export default {
   name: 'ExampleCheckbox',
   components: { ExampleBox, MCheckbox },

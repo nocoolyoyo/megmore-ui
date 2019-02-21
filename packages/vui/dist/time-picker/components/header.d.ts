@@ -4,7 +4,7 @@
 import { Vue } from 'vue-property-decorator';
 import { color } from '../../core/constant';
 export default class MTimePickerHeader extends Vue {
-    color: color;
+    color: color | string;
     DateStore: any;
     readonly classes: {
         [x: string]: boolean;

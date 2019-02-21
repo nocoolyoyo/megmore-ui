@@ -8,7 +8,8 @@ import MTimePickerPanelYear from './components/panel-year';
 import MTimePickerPanelMonth from './components/panel-month';
 import MTimePickerPanelTime from './components/panel-time';
 import MTimePickerHandler from './components/handler';
-import { dateValueFormat, datePickerType, dateValueType } from './constant';
+import { DateValueFormat, DatePickerType, DateValueType } from '../core/constant';
+import { genColor, genElevation } from '../core/util';
 const compName = 'm-time-picker';
 let MTimePicker = class MTimePicker extends Mixins(colorable, elevated) {
     constructor() {
@@ -16,7 +17,7 @@ let MTimePicker = class MTimePicker extends Mixins(colorable, elevated) {
         this.DateStore = {
             value: this.valueAdaptI(this.value),
             pickerType: this.pickerType,
-            activeType: datePickerType.date,
+            activeType: DatePickerType.date,
             ampm: false,
             get dateValue() {
                 return new Date(this.value);
@@ -72,22 +73,22 @@ let MTimePicker = class MTimePicker extends Mixins(colorable, elevated) {
                 }
                 this.ampm = val;
             },
-            UPDATE: (val, type = dateValueType.date) => {
+            UPDATE: (val, type = DateValueType.date) => {
                 const self = this.DateStore;
                 const result = new Date(self.value);
-                if (type === dateValueType.year) {
+                if (type === DateValueType.year) {
                     result.setFullYear(val);
                     self.value = result.getTime();
                 }
-                else if (type === dateValueType.month) {
+                else if (type === DateValueType.month) {
                     result.setMonth(val);
                     self.value = result.getTime();
                 }
-                else if (type === dateValueType.hours) {
+                else if (type === DateValueType.hours) {
                     result.setHours(val);
                     self.value = result.getTime();
                 }
-                else if (type === dateValueType.minutes) {
+                else if (type === DateValueType.minutes) {
                     result.setMinutes(val);
                     self.value = result.getTime();
                 }
@@ -117,13 +118,20 @@ let MTimePicker = class MTimePicker extends Mixins(colorable, elevated) {
     }
     onCancel() { }
     onInput(val) { }
+    get styles() {
+        const { elevation, color } = this;
+        const styles = {};
+        genColor(styles, compName, color);
+        genElevation(styles, compName, elevation);
+        return styles;
+    }
     // 输入适配
     valueAdaptI(val) {
         let result = 0;
-        if (this.valueFormat === dateValueFormat.timestamp) {
+        if (this.valueFormat === DateValueFormat.timestamp) {
             result = typeof val === 'string' ? Number(val) : val;
         }
-        else if (this.valueFormat === dateValueFormat.Date) {
+        else if (this.valueFormat === DateValueFormat.Date) {
             result = val.getTime();
         }
         return result;
@@ -131,10 +139,10 @@ let MTimePicker = class MTimePicker extends Mixins(colorable, elevated) {
     // 输出适配
     valueAdaptO(val) {
         let result = null;
-        if (this.valueFormat === dateValueFormat.timestamp) {
+        if (this.valueFormat === DateValueFormat.timestamp) {
             result = val;
         }
-        else if (this.valueFormat === dateValueFormat.Date) {
+        else if (this.valueFormat === DateValueFormat.Date) {
             result = new Date(val);
         }
         return result;
@@ -154,8 +162,8 @@ let MTimePicker = class MTimePicker extends Mixins(colorable, elevated) {
     onPickerTypeChange(val) {
         this.DateStore.SET_PICKER_TYPE(val);
         switch (val) {
-            case datePickerType.datetime:
-                this.DateStore.SET_ACTIVE_TYPE(dateValueType.date);
+            case DatePickerType.datetime:
+                this.DateStore.SET_ACTIVE_TYPE(DateValueType.date);
                 break;
             default: this.DateStore.SET_ACTIVE_TYPE(val);
         }
@@ -170,25 +178,25 @@ let MTimePicker = class MTimePicker extends Mixins(colorable, elevated) {
         const { color, firstDayOfWeek, max, min } = this;
         const { activeType } = this.DateStore;
         switch (activeType) {
-            case datePickerType.date:
+            case DatePickerType.date:
                 return <MTimePickerPanelDate max={max} min={min} color={color} firstDayOfWeek={firstDayOfWeek}/>;
-            case datePickerType.year:
-                return <MTimePickerPanelYear max={max} min={min} onPick={() => { this.DateStore.SET_ACTIVE_TYPE(datePickerType.date); }}/>;
-            case datePickerType.month:
-                return <MTimePickerPanelMonth onPick={() => { this.DateStore.SET_ACTIVE_TYPE(datePickerType.date); }}/>;
+            case DatePickerType.year:
+                return <MTimePickerPanelYear max={max} color={color} min={min} onPick={() => { this.DateStore.SET_ACTIVE_TYPE(DatePickerType.date); }}/>;
+            case DatePickerType.month:
+                return <MTimePickerPanelMonth color={color} onPick={() => { this.DateStore.SET_ACTIVE_TYPE(DatePickerType.date); }}/>;
             default:
-                return <MTimePickerPanelTime color={color} onPick={() => { this.DateStore.SET_ACTIVE_TYPE(datePickerType.date); }}/>;
+                return <MTimePickerPanelTime color={color} onPick={() => { this.DateStore.SET_ACTIVE_TYPE(DatePickerType.date); }}/>;
         }
     }
     RHandler() {
-        const { confirmation, onConfirm, onCancel } = this;
+        const { confirmation, onConfirm, onCancel, color } = this;
         return !confirmation ? undefined
-            : <MTimePickerHandler onConfirm={onConfirm} onCancel={onCancel}/>;
+            : <MTimePickerHandler onConfirm={onConfirm} color={color} onCancel={onCancel}/>;
     }
     render() {
-        const { classes, color, RPanel, RHandler } = this;
+        const { styles, classes, color, RPanel, RHandler } = this;
         const { pickerType } = this.DateStore;
-        return (<div staticClass={`${compName} m--${pickerType}`} class={classes}>
+        return (<div staticClass={`${compName} m--${pickerType}`} style={styles} class={classes}>
         <div staticClass={`${compName}__main`}>
           <MTimePickerHeader color={color}/>
           <div staticClass={`${compName}-panel`}>{RPanel()}</div>
@@ -207,7 +215,7 @@ tslib_1.__decorate([
     Prop({ type: [Date, Number, String], default: new Date().getTime() })
 ], MTimePicker.prototype, "value", void 0);
 tslib_1.__decorate([
-    Prop({ type: String, default: dateValueFormat.timestamp })
+    Prop({ type: String, default: DateValueFormat.timestamp })
 ], MTimePicker.prototype, "valueFormat", void 0);
 tslib_1.__decorate([
     Prop({ type: Boolean, default: false })
@@ -228,7 +236,7 @@ tslib_1.__decorate([
     Prop({ type: Number, default: 0 })
 ], MTimePicker.prototype, "firstDayOfWeek", void 0);
 tslib_1.__decorate([
-    Prop({ type: String, default: datePickerType.date })
+    Prop({ type: String, default: DatePickerType.date })
 ], MTimePicker.prototype, "pickerType", void 0);
 tslib_1.__decorate([
     Prop({ type: Boolean, default: false })

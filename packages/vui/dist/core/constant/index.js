@@ -96,4 +96,33 @@ export var Align;
     Align["right"] = "right";
 })(Align || (Align = {}));
 export const ALIGN = Object.keys(Align);
+export var DateValueFormat;
+(function (DateValueFormat) {
+    DateValueFormat["timestamp"] = "timestamp";
+    DateValueFormat["Date"] = "Date";
+})(DateValueFormat || (DateValueFormat = {}));
+export var DatePickerType;
+(function (DatePickerType) {
+    DatePickerType["datetime"] = "datetime";
+    DatePickerType["date"] = "date";
+    DatePickerType["year"] = "year";
+    DatePickerType["month"] = "month";
+    DatePickerType["time"] = "time";
+})(DatePickerType || (DatePickerType = {}));
+export var DateValueType;
+(function (DateValueType) {
+    DateValueType["year"] = "year";
+    DateValueType["month"] = "month";
+    DateValueType["week"] = "week";
+    DateValueType["date"] = "date";
+    DateValueType["time"] = "time";
+    DateValueType["hours"] = "hours";
+    DateValueType["minutes"] = "minutes";
+})(DateValueType || (DateValueType = {}));
+export var DateTimeValueType;
+(function (DateTimeValueType) {
+    DateTimeValueType["time"] = "time";
+    DateTimeValueType["hours"] = "hours";
+    DateTimeValueType["minutes"] = "minutes";
+})(DateTimeValueType || (DateTimeValueType = {}));
 //# sourceMappingURL=index.js.map

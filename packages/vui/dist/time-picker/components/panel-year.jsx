@@ -1,12 +1,11 @@
 import * as tslib_1 from "tslib";
 import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator';
 import MButton from '../../button';
-import { dateValueType } from '../constant';
-import { Color, Shape, Variety } from '../../core/constant';
+import { Color, Shape, Variety, DateValueType } from '../../core/constant';
 const compName = 'm-time-picker-panel-year';
 let MTimePickerPanelYear = class MTimePickerPanelYear extends Vue {
     onClick(year) {
-        this.DateStore.UPDATE(year, dateValueType.year);
+        this.DateStore.UPDATE(year, DateValueType.year);
     }
     RCols() {
         const { min, max, onClick } = this;

@@ -51,8 +51,8 @@ let MChip = class MChip extends Mixins(colorable, sizeable, elevated, variable, 
             : undefined);
     }
     render() {
-        const { $slots, RMedia, RClose, onClick } = this;
-        return (<div staticClass={compName} onClick={onClick}>
+        const { classes, styles, $slots, RMedia, RClose, onClick } = this;
+        return (<div staticClass={compName} class={classes} style={styles} onClick={onClick}>
         {RMedia()}
         <div staticClass={`${compName}__main`}>
           {$slots.default}
