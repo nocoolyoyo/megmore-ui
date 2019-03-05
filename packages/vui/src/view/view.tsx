@@ -1,5 +1,5 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { genSize } from '../core/util'
+import { genSize, genIndex } from '../core/util'
 import { Fill, size } from '../core/constant'
 
 const compName = 'm-view'
@@ -50,22 +50,27 @@ export default class MView extends Vue {
   }
 
   get styles () {
-    const { isHeader, isFooter, isLeft, isRight, headerSize, footerSize, leftSize, rightSize
-    } = this
+    const { isHeader, isFooter, isLeft, isRight,
+            headerSize, footerSize, leftSize, rightSize,
+            headerIndex, footerIndex, leftIndex, rightIndex } = this
 
     const styles = { }
 
     if (isHeader) {
       genSize(styles, `${compName}-header`, headerSize)
+      genIndex(styles, `${compName}-header`, headerIndex)
     }
     if (isFooter) {
       genSize(styles, `${compName}-footer`, footerSize)
+      genIndex(styles, `${compName}-footer`, footerIndex)
     }
     if (isLeft) {
       genSize(styles, `${compName}-left`, leftSize)
+      genIndex(styles, `${compName}-left`, leftIndex)
     }
     if (isRight) {
       genSize(styles, `${compName}-right`, rightSize)
+      genIndex(styles, `${compName}-right`, rightIndex)
     }
 
     return styles

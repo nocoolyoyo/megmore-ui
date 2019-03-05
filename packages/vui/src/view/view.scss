@@ -35,6 +35,11 @@ $--m-view-scroll-bar-size-xs: 5px;
     --m-view-footer-shrink: 0;
     --m-view-left-shrink: 0;
     --m-view-right-shrink: 0;
+
+    --m-view-header-index: 4;
+    --m-view-footer-index: 3;
+    --m-view-left-index: 2;
+    --m-view-right-index: 1;
 }
 
 /**
@@ -159,6 +164,7 @@ $--m-view-scroll-bar-size-xs: 5px;
     left: var(--m-view-header-shrink);
     width: var(--m-view-header-grow);
     height: var(--m-view-header-size);
+    z-index: var(--m-view-header-index);
 }
 .m-view-footer {
     @extend %m-view-parts-base;
@@ -166,6 +172,7 @@ $--m-view-scroll-bar-size-xs: 5px;
     width: var(--m-view-footer-grow);
     left: var(--m-view-footer-shrink);
     height: var(--m-view-footer-size);
+    z-index: var(--m-view-footer-index);
 }
 .m-view-left {
     @extend %m-view-parts-base;
@@ -173,6 +180,7 @@ $--m-view-scroll-bar-size-xs: 5px;
     top: var(--m-view-left-shrink);
     height: var(--m-view-left-grow);
     width: var(--m-view-left-size);
+    z-index: var(--m-view-left-index);
 }
 .m-view-right {
     @extend %m-view-parts-base;
@@ -180,4 +188,5 @@ $--m-view-scroll-bar-size-xs: 5px;
     top: var(--m-view-right-shrink);
     height: var(--m-view-right-grow);
     width: var(--m-view-right-size);
+    z-index: var(--m-view-right-index);
 }

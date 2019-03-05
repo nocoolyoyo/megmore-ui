@@ -160,6 +160,18 @@ export function genSpace (styles: any, compName: string, val?: number | string):
 }
 
 /**
+ * 计算层级
+ * @param styles
+ * @param compName
+ * @param val
+ */
+export function genIndex (styles: any, compName: string, val?: number): void {
+  if (val !== undefined) {
+    styles[`--${compName}-index`] = val
+  }
+}
+
+/**
  * 计算形状
  * @param classes
  * @param val

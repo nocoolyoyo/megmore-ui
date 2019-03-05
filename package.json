@@ -12,7 +12,7 @@
     "vui:gen:icons": "lerna run gen:icons --scope @megmore/vui"
   },
   "devDependencies": {
-    "lerna": "^3.10.6"
+    "lerna": "^3.13.0"
   },
   "workspaces": [
     "packages/*"
