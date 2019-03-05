@@ -29,7 +29,7 @@ export default class MTimePickerPanelMonth extends Vue {
       Cols.push(
         <div v-m-ripple
              staticClass='m-time-picker-cell'
-             class={{'m--checked': isCurrent}}
+             class={{ 'm--checked': isCurrent }}
              onClick={() => handleClick(tempValue)}>
           {MonthMap[tempValue]}
         </div>

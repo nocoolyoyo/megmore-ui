@@ -1,6 +1,6 @@
 {
   "name": "@megmore/vui",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -12,9 +12,8 @@
   "main": "src/index.ts",
   "types": "lib-ts/index.d.ts",
   "peerDependencies": {
-    "@megmore/es-helper": "^0.0.24",
+    "@megmore/es-helper": "^0.0.30",
     "@megmore/scss-helper": "^0.0.4",
-    "color": "^3.1.0",
     "vue": "^2.5.21",
     "vue-class-component": "^7.0.1",
     "vue-property-decorator": "^7.3.0"

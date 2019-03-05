@@ -50,7 +50,7 @@ export default class MChip extends Mixins (
     const { closeable, closeover, variety, shape } = this
     const classes = {
       'm--closeable': closeable,
-      'm--closeover': closeover,
+      'm--closeover': closeover
     }
 
     genVariety(classes, variety)

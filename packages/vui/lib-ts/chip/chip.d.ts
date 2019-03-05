@@ -15,9 +15,8 @@ export default class MChip extends MChip_base {
         'm--closeable': boolean;
         'm--closeover': boolean;
     };
-    RMedia(): import("vue").VNode[] | undefined;
+    RMedia(): import("vue/types/vnode").ScopedSlotChildren;
     RClose(): JSX.Element | undefined;
-    3: any;
     render(): JSX.Element;
 }
 export {};

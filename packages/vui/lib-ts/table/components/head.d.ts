@@ -15,6 +15,6 @@ export default class TableHead extends Vue {
     RHead(): JSX.Element;
     RSlotHeadPrepend(): JSX.Element | undefined;
     RSlotHeadAppend(): JSX.Element | undefined;
-    RSlotHeadExtra(): import("vue").VNode[] | undefined;
+    RSlotHeadExtra(): import("vue/types/vnode").ScopedSlotChildren;
     render(): JSX.Element;
 }

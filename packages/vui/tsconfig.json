@@ -21,12 +21,15 @@
     "removeComments": false,
     "noImplicitAny": false,
     "rootDir": "./src",
-    "outDir": "./dist",
+    "outDir": "./lib-ts",
     "noLib": false,
     "lib": ["dom", "es6", "es2017"]
   },
   "include": [
     "./src/**/*.ts",
     "./src/**/*.tsx"
+  ],
+  "exclude": [
+    "./dist/**/*.ts"
   ]
 }

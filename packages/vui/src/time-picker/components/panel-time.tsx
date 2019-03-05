@@ -51,7 +51,7 @@ export default class MTimePickerPanelTime extends Vue {
       Temps.push(
         <div v-m-ripple
              staticClass='m-time-picker-cell'
-             class={{'m--checked': isCurrent}}
+             class={{ 'm--checked': isCurrent }}
              onClick={() => onClick(tempTime, type)}>
           {tempTime}
         </div>

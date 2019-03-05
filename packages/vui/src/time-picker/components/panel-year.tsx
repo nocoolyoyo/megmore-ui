@@ -30,7 +30,7 @@ export default class MTimePickerPanelYear extends Vue {
       Cols.push(
         <div v-m-ripple
              staticClass='m-time-picker-cell'
-             class={{'m--checked': isCurrent }}
+             class={{ 'm--checked': isCurrent }}
              onClick={() => onClick(tempYear)}>
           {tempYear}
         </div>

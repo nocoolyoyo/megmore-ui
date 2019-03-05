@@ -50,7 +50,7 @@ export default class MButton extends Mixins (
     const { shape, variety, block, disabled } = this
     const classes = {
       'm--block': block,
-      'm--disabled': disabled,
+      'm--disabled': disabled
     }
 
     genShape(classes, shape)
@@ -60,7 +60,7 @@ export default class MButton extends Mixins (
   }
 
   render () {
-    const { classes, styles, icon, onClick, color } = this
+    const { classes, styles, icon, onClick, size } = this
 
     return (
       <div v-m-ripple
@@ -69,7 +69,7 @@ export default class MButton extends Mixins (
            style={styles}
            onClick={onClick}>
         {!icon ? undefined
-          : <MIcon name={icon} />}
+          : <MIcon size={size} name={icon} />}
         {!this.$slots.default ? undefined
           : <div class={`${compName}__main`}>{this.$slots.default}</div>}
       </div>

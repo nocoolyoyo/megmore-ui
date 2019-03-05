@@ -61,6 +61,13 @@ export declare function genElevation(styles: any, compName: string, val?: number
  */
 export declare function genSpace(styles: any, compName: string, val?: number | string): void;
 /**
+ * 计算层级
+ * @param styles
+ * @param compName
+ * @param val
+ */
+export declare function genIndex(styles: any, compName: string, val?: number): void;
+/**
  * 计算形状
  * @param classes
  * @param val
