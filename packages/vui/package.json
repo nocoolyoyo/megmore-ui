@@ -1,6 +1,6 @@
 {
   "name": "@megmore/vui",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -10,7 +10,7 @@
     "build:source": "tsc"
   },
   "main": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "types": "lib-ts/index.d.ts",
   "peerDependencies": {
     "@megmore/es-helper": "^0.0.24",
     "@megmore/scss-helper": "^0.0.4",
